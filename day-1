@@ -1,0 +1,90 @@
+# 📘 DSA With Me – Day 1
+
+Welcome to Day 1 of my 60-Day DSA journey! 🚀  
+I'm learning data structures and algorithms using Python, focusing on coding interviews and LeetCode practice.
+
+---
+
+## 📅 Today’s Focus: Time & Space Complexity (Big-O Notation)
+
+### 🎯 Goal
+Understand how to analyze the efficiency of code using **Big-O notation**.
+
+### 🎥 Video Learned From
+[Striver – Time Complexity Analysis (YouTube)](https://youtu.be/FPu9Uld7W-E)
+
+### 🧠 Key Concepts Learned
+- **Big-O Notation**: O(1), O(n), O(n²), O(log n), etc.
+- How to analyze:
+  - **Single loops**
+  - **Nested loops**
+  - **Logarithmic operations**
+- **Best / Worst / Average Cases**
+- Drop constants and lower-order terms
+
+---
+
+## 🧪 Practice Questions with Answers & Explanations
+
+### ✅ Q1. What is the time complexity of the following code?
+
+```python
+for i in range(n):
+    print(i)
+Answer: O(n)
+Explanation: The loop runs from 0 to n–1 → runs n times → linear complexity.
+
+✅ Q2. What is the time complexity of this nested loop?
+for i in range(n):
+    for j in range(n):
+        print(i, j)
+
+
+Answer: O(n²)
+Explanation: Outer loop runs n times. For each outer iteration, inner loop runs n times → total n * n = n².
+
+✅ Q3. What is the time complexity of this loop?
+i = 1
+while i < n:
+    i = i * 2
+
+
+Answer: O(log n)
+Explanation: i doubles each time: 1 → 2 → 4 → 8 → ... until it reaches or exceeds n.
+Number of times this loop runs ≈ log₂(n).
+
+✅ Q4. What is the time complexity of this?
+for i in range(n):
+    for j in range(i):
+        print(i, j)
+
+
+Answer: O(n²)
+Explanation: Inner loop runs i times, and i increases from 0 to n.
+So total operations: 1 + 2 + 3 + ... + n ≈ n(n-1)/2 → still O(n²).
+
+✅ Q5. What is the time complexity of this?
+for i in range(n):
+    print("Hello")
+
+for j in range(n):
+    print("World")
+
+
+Answer: O(n)
+Explanation: Two separate loops of n → total = n + n = 2n → drop constant → O(n).
+
+✅ Q6. What is the time complexity?
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            print(i, j, k)
+
+
+Answer: O(n³)
+Explanation: Triple nested loop → n * n * n = n³
+
+📝 Reflections
+
+Understanding time complexity is crucial for evaluating if an algorithm will scale.
+Visualizing how loops grow with n really helped. Nested loops, logarithmic loops, and drop constants were new ideas for me.
