@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gyani - Personal AI Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      margin: 0;
+      padding: 0;
+      color: #ecf0f1;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: #000;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #bbb;
+    }
+
+    .chatbox {
+      background: #fff;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      color: #222;
+    }
+
+    .chatlog {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    .chatlog div {
+      margin: 10px 0;
+    }
+
+    .user {
+      text-align: right;
+      color: #007acc;
+    }
+
+    .gyani {
+      text-align: left;
+      color: #2c3e50;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9em;
+      background: #111;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Gyani - AI Assistant</h1>
+    <p>Ask me anything like "open google", "open youtube", or "weather"</p>
+  </header>
+
+  <div class="chatbox">
+    <div class="chatlog" id="chatlog">
+      <div class="gyani">Hi! I'm Gyani. What would you like me to do?</div>
+    </div>
+    <input type="text" id="userInput" placeholder="Type a command and press Enter..." onkeydown="if(event.key==='Enter'){sendMessage()}">
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chatlog = document.getElementById("chatlog");
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Show user message
+      chatlog.innerHTML += `<div class="user">You: ${message}</div>`;
+      input.value = "";
+
+      // Default response
+      let response = "I didn't understand that.";
+
+      // Convert to lowercase for matching
+      const msg = message.toLowerCase();
+
+      // Handle commands
+      if (msg.includes("open google")) {
+        response = "Opening Google...";
+        window.open("https://www.google.com", "_blank");
+      } else if (msg.includes("open youtube")) {
+        response = "Opening YouTube...";
+        window.open("https://www.youtube.com", "_blank");
+      } else if (msg.includes("play song")) {
+        response = "Searching YouTube for your song...";
+        window.open("https://www.youtube.com/results?search_query=song", "_blank");
+      } else if (msg.includes("weather")) {
+        response = "Please enter your city name to check weather.";
+      } else if (msg.includes("schedule")) {
+        response = "Today's schedule: Study AI from 7:30 PM to 11:30 PM.";
+      }
+
+      // Show bot response
+      setTimeout(() => {
+        chatlog.innerHTML += `<div class="gyani">Gyani: ${response}</div>`;
+        chatlog.scrollTop = chatlog.scrollHeight;
+      }, 300);
+    }
+  </script>
+
+  <footer>
+    &copy; 2025 Vahege | Gyani - AI Assistant Web Project
+  </footer>
+
+</body>
+</html>
