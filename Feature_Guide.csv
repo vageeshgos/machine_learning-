@@ -1,0 +1,20 @@
+Feature Dictionary - Stock Profile Prediction,,,
+Feature,Type,Description,Use in Model
+Market Cap ($B),Numerical,Total market capitalization in billion USD,Size indicator
+P/E Ratio,Numerical,Price-to-Earnings ratio,Valuation feature
+P/B Ratio,Numerical,Price-to-Book ratio,Valuation feature
+ROE (%),Numerical,Return on Equity,Profitability feature
+Debt/Equity,Numerical,Leverage ratio,Risk feature
+Revenue Growth YoY (%),Numerical,Year-over-year revenue growth,Growth feature
+Profit Margin (%),Numerical,Net profit margin percentage,Profitability feature
+Beta,Numerical,Market sensitivity / volatility measure,Risk feature
+RSI (14D),Numerical,Relative Strength Index (momentum indicator),Technical feature
+MACD,Numerical,Moving Avg Convergence Divergence,Technical feature
+3M Volatility (%),Numerical,3-month historical volatility,Risk feature
+Analyst Buy/Hold/Sell,Numerical,Analyst consensus ratings count,Sentiment feature
+Market Sentiment,Categorical,Bullish / Neutral / Bearish,Sentiment feature
+Sector,Categorical,Industry classification,Categorical feature
+Country,Categorical,Stock exchange country,Categorical feature
+Risk Category,Categorical (derived),Low/Medium/High based on Beta,Target / Feature
+Growth Category,Categorical (derived),Stable/Moderate/High Growth,Target / Feature
+Prediction Label,TARGET,Buy / Hold / Sell recommendation,Target Variable

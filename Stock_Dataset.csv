@@ -1,0 +1,21 @@
+Company Name,Ticker,Sector,Exchange,Country,Market Cap ($B),Current Price ($),52W High ($),52W Low ($),Revenue ($B),Net Income ($B),EPS ($),P/E Ratio,P/B Ratio,ROE (%),Debt/Equity,Dividend Yield (%),Revenue Growth YoY (%),Profit Margin (%),Current Ratio,Beta,RSI (14D),MACD,3M Volatility (%),Analyst Buy,Analyst Hold,Analyst Sell,Target Price ($),Market Sentiment,Risk Category,Growth Category,Prediction Label
+Apple Inc.,AAPL,Technology,NASDAQ,USA,2800,1342.16,1353.0,1118.92,1218.6,275.89,86.38,15.54,3.61,28.41,0.15,0.69,37.96,22.64,1.37,1.52,61.86,-4.794,63.5,25,2,3,1618.42,Bullish,High,High Growth,Buy
+TCS Ltd.,TCS.NS,IT Services,NSE,India,145,1429.52,1771.86,1149.41,23.78,6.53,4.22,338.58,2.72,9.28,0.96,3.44,3.56,27.48,3.34,1.29,68.7,1.803,37.52,18,3,1,1504.29,Bullish,Medium,Stable,Hold
+Tesla Inc.,TSLA,Automotive/EV,NASDAQ,USA,650,471.03,524.67,370.25,194.06,16.86,3.67,128.29,4.99,5.2,0.78,1.82,42.46,8.69,3.22,1.43,38.32,4.696,53.76,18,9,5,470.09,Bullish,High,High Growth,Hold
+Infosys Ltd.,INFY.NS,IT Services,NSE,India,72,986.15,1210.88,956.8,28.7,4.34,2.46,400.51,8.83,17.63,2.01,0.26,37.25,15.14,2.71,2.18,64.75,-3.013,15.28,7,4,0,1186.32,Bearish,High,High Growth,Sell
+Microsoft Corp.,MSFT,Technology,NASDAQ,USA,2900,2982.63,3009.17,2051.34,826.02,81.84,37.74,79.03,10.53,5.65,1.48,0.22,33.31,9.91,1.44,1.45,47.23,4.717,57.45,18,8,2,3463.93,Bullish,High,High Growth,Hold
+Reliance Ind.,RELIANCE.NS,Conglomerate,NSE,India,200,158.43,181.53,151.96,68.18,9.74,3.49,45.35,13.75,13.0,1.03,2.64,42.05,14.29,2.98,0.89,33.46,-2.102,23.06,29,6,5,178.75,Bullish,Low,High Growth,Hold
+Amazon Inc.,AMZN,E-Commerce/Cloud,NASDAQ,USA,1700,1168.99,1334.22,786.39,317.26,47.99,10.48,111.58,5.17,5.71,0.0,1.23,32.08,15.13,1.53,1.02,37.41,0.341,39.24,28,12,5,1179.96,Neutral,Medium,High Growth,Hold
+Wipro Ltd.,WIPRO.NS,IT Services,NSE,India,28,926.01,1004.49,862.21,6.27,1.38,0.37,2494.25,3.5,8.2,0.67,3.42,31.59,21.93,2.23,1.2,31.49,-1.549,46.72,10,8,3,870.84,Bullish,Medium,High Growth,Hold
+NVIDIA Corp.,NVDA,Semiconductors,NASDAQ,USA,1800,1672.54,2220.89,1167.65,801.05,127.98,30.66,54.55,12.28,20.6,1.27,2.44,37.0,15.98,1.74,1.96,44.67,-2.798,50.56,11,5,0,2083.09,Bullish,High,High Growth,Hold
+HDFC Bank,HDFCBANK.NS,Banking,NSE,India,120,1226.68,1594.33,971.01,22.09,5.85,1.32,932.51,4.98,9.79,2.04,1.94,40.82,26.49,2.51,1.4,40.88,-4.069,59.86,13,10,2,1533.57,Neutral,High,High Growth,Hold
+Meta Platforms,META,Social Media,NASDAQ,USA,1100,3112.81,3926.1,2731.09,445.81,119.09,29.52,105.45,10.53,22.83,0.93,3.29,21.83,26.71,3.49,2.16,42.78,-1.946,39.28,8,2,3,3170.78,Bullish,High,High Growth,Hold
+Bajaj Finance,BAJFINANCE.NS,NBFC,NSE,India,55,2979.82,3005.18,2610.07,19.1,3.7,4.01,742.35,6.46,17.72,0.61,3.41,24.11,19.37,2.36,1.17,70.14,1.311,54.74,5,6,3,3758.23,Bullish,Medium,High Growth,Hold
+Alphabet Inc.,GOOGL,Technology,NASDAQ,USA,1900,661.03,876.2,445.96,821.06,222.33,48.16,13.73,6.5,38.41,2.32,0.34,19.17,27.08,3.1,2.14,73.36,3.53,29.72,7,3,0,725.38,Neutral,High,Moderate,Hold
+Tata Motors,TATAMOTORS.NS,Automotive,NSE,India,30,770.77,960.14,715.68,10.54,1.6,0.97,792.2,5.49,13.44,2.12,0.48,13.76,15.17,2.45,1.71,54.88,-2.035,35.99,11,10,3,1001.34,Neutral,High,Moderate,Hold
+Netflix Inc.,NFLX,Streaming,NASDAQ,USA,250,3120.52,3800.83,2121.55,62.85,9.75,10.56,295.41,9.31,12.55,1.16,0.43,37.55,15.51,1.77,0.99,56.59,-4.695,16.87,9,2,7,4009.86,Bullish,Medium,High Growth,Hold
+ICICI Bank,ICICIBANK.NS,Banking,NSE,India,85,228.3,240.8,168.39,26.3,4.95,1.47,155.43,11.3,9.82,1.29,1.13,4.06,18.81,3.4,1.85,42.19,-0.61,18.92,27,10,3,252.15,Bullish,High,Stable,Hold
+Adobe Inc.,ADBE,Software,NASDAQ,USA,220,1944.83,2267.6,1330.74,80.16,17.0,9.66,201.34,14.39,14.82,1.39,2.14,3.6,21.2,1.11,1.21,41.15,-1.44,52.89,9,2,5,2582.21,Neutral,Medium,Stable,Hold
+Sun Pharma,SUNPHARMA.NS,Pharma,NSE,India,40,1746.07,2320.67,1486.64,11.68,1.34,0.55,3197.42,6.88,6.91,1.59,0.16,30.67,11.46,1.24,1.14,58.16,0.031,57.82,28,8,1,1594.61,Neutral,Medium,High Growth,Hold
+Salesforce,CRM,SaaS/CRM,NYSE,USA,280,1389.19,1554.8,1029.72,96.04,16.48,5.58,249.05,14.21,14.16,2.4,0.72,6.97,17.17,2.64,0.83,33.12,-3.992,15.91,21,11,7,1517.96,Neutral,Low,Stable,Hold
+Hindustan Unilever,HINDUNILVR.NS,FMCG,NSE,India,60,1761.33,2180.43,1600.99,21.47,3.21,0.68,2584.13,2.03,12.59,2.42,1.92,8.36,14.97,1.48,1.22,55.58,0.759,51.58,28,8,5,2080.01,Bullish,Medium,Stable,Hold
