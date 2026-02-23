@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Knowledge Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1><span>🤖</span> AI Knowledge Assistant</h1>
+
+    <form method="POST" autocomplete="off">
+      <input
+        type="text"
+        name="query"
+        placeholder="Ask anything about AI..."
+        required
+      />
+      <button type="submit">🔍 Search</button>
+    </form>
+
+    {% if results %}
+    <div class="results">
+      <h2>Top 3 Relevant Answers</h2>
+      {% for doc, score in results %}
+      <div class="result">
+        <p class="doc">{{ doc }}</p>
+        <p class="score">⚡ Score: {{ "%.4f"|format(score) }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
