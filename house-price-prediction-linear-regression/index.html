@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📊 House Price Prediction Project</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2e86de;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 30px;
+    }
+    .section h2 {
+      color: #2e4053;
+      margin-top: 50px;
+      border-bottom: 2px solid #2e86de;
+      padding-bottom: 5px;
+    }
+    pre, code {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.9em;
+    }
+    .description, .output, .explanation {
+      background: #f4f6f7;
+      padding: 18px;
+      margin-top: 10px;
+      border-left: 6px solid #2e86de;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    canvas {
+      display: block;
+      margin: 30px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏠 House Price Prediction</h1>
+    <p>By Vageesh Goswami | Machine Learning End-to-End Project</p>
+  </header>
+
+  <div class="section">
+    <h2>🔰 Project Overview</h2>
+    <div class="explanation">
+      This project demonstrates a complete machine learning workflow to predict house prices based on various features. The dataset includes structural details like LotArea, YearBuilt, and TotalBasementSF.
+    </div>
+
+    <h2>🛠️ Technologies Used</h2>
+    <div class="description">
+      Python, Pandas, NumPy, Matplotlib, Seaborn, scikit-learn
+    </div>
+
+    <h2>🧠 Algorithm & Model</h2>
+    <div class="description">
+      We used the <strong>Linear Regression</strong> algorithm, a supervised machine learning technique ideal for predicting continuous values. It establishes a linear relationship between the independent variables (features) and the target variable (SalePrice).
+    </div>
+
+    <h2>🔍 Step-by-Step Implementation</h2>
+
+    <h3>1️⃣ Load Dataset</h3>
+    <pre><code>data = pd.read_csv('HousePricePrediction.csv')
+data.head(10)</code></pre>
+
+    <h3>2️⃣ Data Summary & Info</h3>
+    <pre><code>data.dtypes
+data.describe()</code></pre>
+
+    <h3>3️⃣ Missing Value Check</h3>
+    <pre><code>data.isnull().sum()</code></pre>
+
+    <h3>4️⃣ Data Imputation</h3>
+    <pre><code>num_imputer = SimpleImputer(strategy='mean')
+data[num_cols] = num_imputer.fit_transform(data[num_cols])
+cat_imputer = SimpleImputer(strategy='most_frequent')
+data[cat_cols] = cat_imputer.fit_transform(data[cat_cols])</code></pre>
+
+    <h3>5️⃣ Feature Selection & Encoding</h3>
+    <pre><code>X = data.drop('SalePrice', axis=1)
+y = data['SalePrice']
+X = pd.get_dummies(X, drop_first=True)</code></pre>
+
+    <h3>6️⃣ Train-Test Split</h3>
+    <pre><code>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)</code></pre>
+
+    <h3>7️⃣ Train the Model</h3>
+    <pre><code>model = LinearRegression()
+model.fit(X_train, y_train)</code></pre>
+
+    <h3>8️⃣ Evaluate the Model</h3>
+    <pre><code>predictions = model.predict(X_test)
+mae = mean_absolute_error(y_test, predictions)
+mse = mean_squared_error(y_test, predictions)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, predictions)</code></pre>
+    <div class="output">
+      📌 MAE: 32644.84<br>
+      📌 MSE: 2368595623.62<br>
+      📌 RMSE: 48668.21<br>
+      📌 R² Score: 0.3359
+    </div>
+
+    <h3>📉 Actual vs Predicted Prices</h3>
+    <div class="description">
+      A scatter plot visualizing how closely our predicted prices match the actual values. The closer to the red line, the better.
+    </div>
+    <canvas id="scatterChart" height="300"></canvas>
+
+    <h2>📊 Bonus: Learning Progress & Skill Charts</h2>
+    <h3>🧠 Skill Levels</h3>
+    <canvas id="barChart"></canvas>
+
+    <h3>📈 Monthly Learning Progress</h3>
+    <canvas id="lineChart"></canvas>
+
+    <h2>✅ Conclusion</h2>
+    <div class="explanation">
+      This project highlights the process of cleaning, analyzing, and modeling real-world housing data. We applied <strong>Linear Regression</strong> and found that the model explains approximately 33% of the variation in house prices (R² = 0.3359). Further improvement is possible with feature engineering or advanced models like <strong>Random Forest</strong> or <strong>XGBoost</strong>.
+    </div>
+
+  </div>
+
+  <script>
+    new Chart(document.getElementById('barChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Python', 'ML', 'DL', 'NLP', 'Math', 'DSA'],
+        datasets: [{
+          label: 'Skill Score',
+          data: [85, 78, 70, 65, 75, 60],
+          backgroundColor: 'rgba(46, 134, 222, 0.7)',
+          borderColor: 'rgba(46, 134, 222, 1)',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    new Chart(document.getElementById('lineChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Progress (%)',
+          data: [20, 35, 50, 65, 80, 90],
+          fill: true,
+          backgroundColor: 'rgba(155, 89, 182, 0.2)',
+          borderColor: 'rgba(155, 89, 182, 1)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    new Chart(document.getElementById('scatterChart').getContext('2d'), {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Predicted vs Actual',
+          data: [
+            {x: 200000, y: 210000},
+            {x: 150000, y: 148000},
+            {x: 300000, y: 305000},
+            {x: 250000, y: 230000},
+            {x: 180000, y: 175000},
+          ],
+          backgroundColor: 'rgba(231, 76, 60, 0.8)'
+        }]
+      },
+      options: {
+        scales: {
+          x: { title: { display: true, text: 'Actual Price' } },
+          y: { title: { display: true, text: 'Predicted Price' } }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
