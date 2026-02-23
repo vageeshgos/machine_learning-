@@ -1,0 +1,121 @@
+/* style.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  animation: backgroundPulse 10s infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+  }
+  100% {
+    background: linear-gradient(135deg, #1f1f1f, #2f2f2f);
+  }
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 700px;
+  width: 90%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #00ffee;
+}
+
+h1 span {
+  font-size: 2.5rem;
+  vertical-align: middle;
+}
+
+form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #222;
+  color: #00ffee;
+  font-size: 1rem;
+  transition: 0.3s;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 10px #00ffee88;
+}
+
+button {
+  padding: 0.75rem 1.2rem;
+  background: #00ffee;
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00c0c0;
+}
+
+.results {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #00ffee;
+}
+
+.result {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #333;
+}
+
+.result:last-child {
+  border-bottom: none;
+}
+
+.doc {
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.score {
+  font-size: 0.85rem;
+  color: #00ffee;
+  margin-top: 0.25rem;
+}
