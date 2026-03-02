@@ -396,4 +396,5 @@ st.markdown("""
 margin-top:3rem;font-family:'IBM Plex Mono',monospace;">
 LOANGUARD AI · ML PORTFOLIO PROJECT · EDUCATIONAL USE ONLY · NOT FINANCIAL ADVICE
 </div>
+
 """, unsafe_allow_html=True)
