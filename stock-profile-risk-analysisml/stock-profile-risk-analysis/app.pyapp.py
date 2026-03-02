@@ -445,3 +445,4 @@ with tab_single:
     st.markdown(f"Predicted Risk Category: {pred}")
     st.write("Class probabilities:", dict(zip(model.classes_, np.round(proba, 2))))
 
+
