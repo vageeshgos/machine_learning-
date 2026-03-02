@@ -108,4 +108,5 @@ if st.button("🔍 Predict Default Risk"):
     col1, col2, col3 = st.columns(3)
     col1.metric("FICO Score", fico)
     col2.metric("Interest Rate", f"{int_rate:.2%}")
+
     col3.metric("DTI Ratio", f"{dti:.1f}")
