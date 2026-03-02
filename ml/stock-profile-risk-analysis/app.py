@@ -446,3 +446,4 @@ with tab_single:
     st.write("Class probabilities:", dict(zip(model.classes_, np.round(proba, 2))))
 
 
+
