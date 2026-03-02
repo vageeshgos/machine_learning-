@@ -1,0 +1,111 @@
+import streamlit as st
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+import warnings
+warnings.filterwarnings('ignore')
+
+# --- LOAD & TRAIN MODEL ---
+@st.cache_resource
+def train_model():
+    df = pd.read_csv('loan_data.csv')
+    df = pd.get_dummies(df, columns=['purpose'], drop_first=True)
+    
+    X = df.drop('not.fully.paid', axis=1)
+    y = df['not.fully.paid']
+    
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    
+    model = LogisticRegression(class_weight='balanced', 
+                                random_state=42, max_iter=1000)
+    model.fit(X_train, y_train)
+    
+    return model, scaler, X.columns.tolist()
+
+model, scaler, feature_cols = train_model()
+
+# --- UI ---
+st.title("🏦 Loan Default Predictor")
+st.markdown("Predict whether a borrower will **default** on their loan.")
+
+st.sidebar.header("📋 Enter Borrower Details")
+
+credit_policy = st.sidebar.selectbox("Credit Policy", [1, 0])
+int_rate = st.sidebar.slider("Interest Rate", 0.06, 0.25, 0.12)
+installment = st.sidebar.slider("Monthly Installment (₹)", 10, 1000, 200)
+log_annual_inc = st.sidebar.slider("Log Annual Income", 8.0, 14.0, 11.0)
+dti = st.sidebar.slider("Debt-to-Income Ratio", 0.0, 30.0, 10.0)
+fico = st.sidebar.slider("FICO Credit Score", 300, 850, 650)
+days_cr_line = st.sidebar.slider("Days with Credit Line", 0, 20000, 5000)
+revol_bal = st.sidebar.slider("Revolving Balance", 0, 100000, 15000)
+revol_util = st.sidebar.slider("Revolving Utilization %", 0.0, 120.0, 50.0)
+inq_last_6mths = st.sidebar.slider("Inquiries Last 6 Months", 0, 10, 1)
+delinq_2yrs = st.sidebar.slider("Delinquencies (2 yrs)", 0, 10, 0)
+pub_rec = st.sidebar.slider("Public Records", 0, 5, 0)
+
+# --- PURPOSE (one-hot) ---
+purpose = st.sidebar.selectbox("Loan Purpose", 
+    ['credit_card', 'debt_consolidation', 'educational',
+     'home_improvement', 'major_purchase', 'small_business'])
+
+# --- BUILD INPUT ---
+input_dict = {
+    'credit.policy': credit_policy,
+    'int.rate': int_rate,
+    'installment': installment,
+    'log.annual.inc': log_annual_inc,
+    'dti': dti,
+    'fico': fico,
+    'days.with.cr.line': days_cr_line,
+    'revol.bal': revol_bal,
+    'revol.util': revol_util,
+    'inq.last.6mths': inq_last_6mths,
+    'delinq.2yrs': delinq_2yrs,
+    'pub.rec': pub_rec,
+    'purpose_credit_card': 1 if purpose == 'credit_card' else 0,
+    'purpose_debt_consolidation': 1 if purpose == 'debt_consolidation' else 0,
+    'purpose_educational': 1 if purpose == 'educational' else 0,
+    'purpose_home_improvement': 1 if purpose == 'home_improvement' else 0,
+    'purpose_major_purchase': 1 if purpose == 'major_purchase' else 0,
+    'purpose_small_business': 1 if purpose == 'small_business' else 0,
+}
+
+input_df = pd.DataFrame([input_dict])
+
+# Align columns with training data
+for col in feature_cols:
+    if col not in input_df.columns:
+        input_df[col] = 0
+input_df = input_df[feature_cols]
+
+input_scaled = scaler.transform(input_df)
+
+# --- PREDICT ---
+if st.button("🔍 Predict Default Risk"):
+    prob = model.predict_proba(input_scaled)[0][1]
+    pred = model.predict(input_scaled)[0]
+
+    st.markdown("---")
+
+    if pred == 1:
+        st.error(f"⚠️ HIGH RISK — Default Probability: {prob:.2%}")
+    else:
+        st.success(f"✅ LOW RISK — Default Probability: {prob:.2%}")
+
+    # Risk meter
+    st.markdown("### 📊 Risk Score")
+    st.progress(int(prob * 100))
+
+    # Feature summary
+    st.markdown("### 📋 Borrower Summary")
+    col1, col2, col3 = st.columns(3)
+    col1.metric("FICO Score", fico)
+    col2.metric("Interest Rate", f"{int_rate:.2%}")
+    col3.metric("DTI Ratio", f"{dti:.1f}")
