@@ -42,49 +42,49 @@ def create_qa_chain(docs):
     return RetrievalQA.from_chain_type(llm=get_llm(), retriever=retriever)
 
 # Streamlit App
-st.set_page_config(page_title="📚 RAG Chatbot", layout="centered")
-st.title("🧠 Multi-Source RAG Chatbot")
+st.set_page_config(page_title=" RAG Chatbot", layout="centered")
+st.title(" Multi-Source RAG Chatbot")
 
 # Selection Menu
-option = st.selectbox("📌 Select a source type", ["Select...", "Upload PDF", "Website URL", "Wikipedia Topic", "YouTube URL"])
+option = st.selectbox(" Select a source type", ["Select...", "Upload PDF", "Website URL", "Wikipedia Topic", "YouTube URL"])
 
 docs = []
 
 if option == "Upload PDF":
-    uploaded_file = st.file_uploader("📄 Upload your PDF", type=["pdf"])
-    if uploaded_file and st.button("📥 Load PDF"):
+    uploaded_file = st.file_uploader(" Upload your PDF", type=["pdf"])
+    if uploaded_file and st.button(" Load PDF"):
         with st.spinner("Loading PDF..."):
             docs = load_pdf(uploaded_file)
             st.session_state.qa = create_qa_chain(docs)
-            st.success("✅ PDF loaded and ready!")
+            st.success(" PDF loaded and ready!")
 
 elif option == "Website URL":
-    url = st.text_input("🌐 Enter Website URL")
-    if url and st.button("📥 Load Website"):
+    url = st.text_input(" Enter Website URL")
+    if url and st.button("Load Website"):
         with st.spinner("Loading website..."):
             docs = load_web(url)
             st.session_state.qa = create_qa_chain(docs)
-            st.success("✅ Website content loaded!")
+            st.success(" Website content loaded!")
 
 elif option == "Wikipedia Topic":
-    topic = st.text_input("📖 Enter Wikipedia topic")
-    if topic and st.button("📥 Load Wikipedia"):
+    topic = st.text_input(" Enter Wikipedia topic")
+    if topic and st.button(" Load Wikipedia"):
         with st.spinner("Loading Wikipedia..."):
             docs = load_wiki(topic)
             st.session_state.qa = create_qa_chain(docs)
-            st.success("✅ Wikipedia content loaded!")
+            st.success(" Wikipedia content loaded!")
 
 elif option == "YouTube URL":
-    yt_url = st.text_input("📺 Enter YouTube video URL")
-    if yt_url and st.button("📥 Load YouTube Transcript"):
+    yt_url = st.text_input(" Enter YouTube video URL")
+    if yt_url and st.button(" Load YouTube Transcript"):
         with st.spinner("Loading YouTube transcript..."):
             docs = load_youtube(yt_url)
             st.session_state.qa = create_qa_chain(docs)
-            st.success("✅ YouTube transcript loaded!")
+            st.success(" YouTube transcript loaded!")
 
 # Chatbot UI
 if "qa" in st.session_state:
-    query = st.text_input("💬 Ask your question")
+    query = st.text_input(" Ask your question")
     if query:
         with st.spinner("Thinking..."):
             response = st.session_state.qa.run(query)
